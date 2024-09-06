@@ -115,5 +115,4 @@ func main() {
 	fmt.Println("Scrapping Completed")
 
 	c.Visit("https://www.vlr.gg/event/agents/2097/valorant-champions-2024")
-	// fmt.Println(data)
 }
