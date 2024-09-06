@@ -35,9 +35,7 @@ func sortMapByValues(m map[string]int) PairList {
 func main() {
 
 	type Row map[string]string
-	// var allMaps []map[string]map[string]int
 	type Table []Row
-	// tables := []Table{}
 	c := colly.NewCollector()
 
 	c.OnRequest(func(r *colly.Request) {
@@ -52,79 +50,35 @@ func main() {
 		var headers []string
 		e.ForEach("tr", func(i int, tr *colly.HTMLElement) {
 			row := Row{}
-			//fmt.Println(i)
-			// if i > 1 {
-			// fmt.Println("0")
-			// currentMap := make(map[string]map[string]int)
 			if i == 0 {
 				tr.ForEach("th", func(i int, h *colly.HTMLElement) {
 					if i == 0 {
 						headers = append(headers, h.Text)
-						//fmt.Println(h.Text)
 					}
 				})
 				tr.ForEach("th img", func(i int, th *colly.HTMLElement) {
 					re := regexp.MustCompile("/img/vlr/game/agents/(.*).png")
 					headers = append(headers, strings.TrimSpace(re.ReplaceAllString(th.Attr("src"), "${1}")))
-					//fmt.Println(headers)
 				})
 			} else if i > 1 {
-				//fmt.Println(i)
 				tr.ForEach("td", func(i int, td *colly.HTMLElement) {
-					//fmt.Println("td = ", td)
-					//fmt.Println("td.Class = ", td.Attr("class"))
-					//fmt.Println("td.Attr = ", td.Attr("style"))
 					if td.Attr("style") == "white-space: nowrap; padding-top: 0; padding-bottom: 0;" {
 						td.DOM.Find("span").Remove()
 						if i < len(headers) {
 							header := headers[i]
 							row[header] = strings.TrimSpace(strings.TrimSpace(td.DOM.Text()))
-							//fmt.Println(row[header])
 						}
 					}
-					// if td.Attr("class") == "mod-right" {
-					// 	//fmt.Println("td.Text = ", strings.TrimSpace(tds))
-					// 	if i < len(headers) {
-					// 		header := headers[i]
-					// 		row[header] = strings.TrimSpace(td.Text)
-					// 	}
-					//fmt.Println(td.DOM.Text())
-					// tds := tr.DOM.Find("td")
-					// tds.Find("span").Remove()
-					// //fmt.Println(tds.Text())
-					// if i < len(headers) {
-					// 	header := headers[i]
-					// 	row[header] = strings.TrimSpace(tds.Text())
-					// }
-					//}
 					if td.Attr("class") == "mod-color-sq" {
-						//fmt.Println(td.ChildText("span"))
-						//fmt.Println(i, " ", len(headers))
-						//if i < len(headers) {
-						//fmt.Println(i)
 						header := headers[i-3]
-						//fmt.Println(headers[i-3])
-						//fmt.Println(headers[i-3])
 						row[header] = strings.TrimSpace(td.ChildText("span"))
-						//fmt.Println(strings.TrimSpace(td.ChildText("span")))
-						// if i < len(heajders) {
-						// 	header := headers[i]
-						// 	row[header] = strings.TrimSpace(td.Text)
-						// }
-						//}
 					}
-					//fmt.Println(table)
 				})
 				if len(row) > 0 {
 					table = append(table, row)
-					//fmt.Println(table)
 				}
 			}
 		})
-		//fmt.Println(table)
-		// if len(table) > 0 {
-		// 	tables = append(tables, table)
-		// }
 		for i := range table {
 			for key, value := range table[i] {
 				newValue := strings.ReplaceAll(value, "%", "")
@@ -143,23 +97,16 @@ func main() {
 				}
 				if copyNext {
 					delete(table[i], "Map")
-					//fmt.Println(table[i])
 					saveMap = table[i]
 					copyNext = false
 				}
 			}
 
 		}
-		//fmt.Println(saveMap)
 		for key, value := range saveMap {
 			mapWithIntValue[key], _ = strconv.Atoi(value)
 		}
-		//fmt.Println(mapWithIntValue)
 		result := sortMapByValues(mapWithIntValue)
-		//fmt.Println(result)
-		// for i := range result {
-		// 	fmt.Println(i)
-		// }
 		for i := 0; i < 5; i++ {
 			fmt.Print(result[i].Key, " ")
 		}
