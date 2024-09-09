@@ -87,6 +87,7 @@ func main() {
 		}
 		var saveMap map[string]string
 		var testValMap string
+		fmt.Println("Type map name(like this: Bind)")
 		fmt.Scanln(&testValMap)
 		copyNext := false
 		mapWithIntValue := make(map[string]int)
