@@ -10,6 +10,7 @@ import (
 type Row map[string]string
 type Table []Row
 
+// ReadTable reading data from table on site
 func ReadTable() Table {
 	table := Table{}
 	c := colly.NewCollector()

@@ -5,6 +5,7 @@ import (
 	"valorantAgentMeta/pair"
 )
 
+// SortAndPrintResult sorting map and printing 5 best agents on the Valorant Map
 func SortAndPrintResult(mapWithIntValue map[string]int) {
 
 	result := pair.SortMapByValues(mapWithIntValue)

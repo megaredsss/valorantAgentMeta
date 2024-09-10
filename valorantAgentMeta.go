@@ -7,22 +7,24 @@ import (
 	"valorantAgentMeta/tableReader"
 )
 
+var testValMap string
+
 func main() {
 
 	table := tableReader.ReadTable()
 
 	formatTable.RemovePercent(table)
-	var testValMap string
+
 	fmt.Println("Type map name(like this: Bind)")
 
+	// get Map from user
 	_, err := fmt.Scanln(&testValMap)
 	if err != nil {
 		fmt.Println("Error reading input:", err)
 	}
 
 	mapWithIntValue := formatTable.ConvertMap(table, testValMap)
+
 	getResult.SortAndPrintResult(mapWithIntValue)
-	fmt.Println("")
-	fmt.Println("Scrapping Completed")
 
 }

@@ -12,6 +12,7 @@ func (p PairList) Len() int           { return len(p) }
 func (p PairList) Swap(i, j int)      { p[i], p[j] = p[j], p[i] }
 func (p PairList) Less(i, j int) bool { return p[i].Value < p[j].Value }
 
+// SortMapByValues sorting map by value and return PairList
 func SortMapByValues(m map[string]int) PairList {
 	p := make(PairList, len(m))
 
