@@ -35,3 +35,13 @@ Type map name(like this: Bind)
 Bind
 viper raze gekko brimstone fade
 ```
+## Docker version
+- If you have docker, you can run this application with it. Download the program, navigate to the folder as in the classic version, and enter
+```console
+ docker build . -t valorantagentmeta
+```
+- After build you should run the container
+```console
+ docker run -it valorantagentmeta
+```
+And follow classic version
