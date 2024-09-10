@@ -14,7 +14,7 @@ go version
 if you dont have Go visit this https://go.dev/dl/
 - Jump to the folder there you donwload program, for example like this in console
 ```console
-cd \path\to\folder
+cd path\to\folder
 ```
 - Open this folder in terminal or cmd and type this
 ```console
