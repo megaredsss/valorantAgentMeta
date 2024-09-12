@@ -1,15 +1,14 @@
-package formatTable
+package internal
 
 import (
 	"strconv"
-	"valorantAgentMeta/tableReader"
 )
 
 var saveMap map[string]string
 
 // ConvertMap converting map[string]string to [string]int
 // delete Valorant Map from map and return new map
-func ConvertMap(table tableReader.Table, testValMap string) map[string]int {
+func ConvertMap(table Table, testValMap string) map[string]int {
 	mapWithIntValue := make(map[string]int)
 	for i := range table {
 		for key, value := range table[i] {

@@ -1,12 +1,11 @@
-package formatTable
+package internal
 
 import (
 	"strings"
-	"valorantAgentMeta/tableReader"
 )
 
 // RemovePercent removes % symbol for agents winrate
-func RemovePercent(table tableReader.Table) {
+func RemovePercent(table Table) {
 	for i := range table {
 		for key, value := range table[i] {
 			newValue := strings.ReplaceAll(value, "%", "")

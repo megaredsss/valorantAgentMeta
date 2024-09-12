@@ -1,4 +1,4 @@
-package tableReader
+package internal
 
 import (
 	"fmt"
