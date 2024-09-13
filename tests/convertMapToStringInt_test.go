@@ -1,4 +1,4 @@
-package convertMapToStringIntTest
+package Test
 
 import (
 	"reflect"

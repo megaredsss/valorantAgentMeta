@@ -1,4 +1,4 @@
-package removePercentSymbolTest
+package Test
 
 import (
 	"reflect"

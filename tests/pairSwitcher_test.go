@@ -1,4 +1,4 @@
-package pairSwitcherTest
+package Test
 
 import (
 	"reflect"
