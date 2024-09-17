@@ -5,7 +5,7 @@ import (
 	"valorantAgentMeta/internal"
 )
 
-var testValMap string
+var Map string
 
 func main() {
 
@@ -16,12 +16,12 @@ func main() {
 	fmt.Println("Type map name(like this: Bind)")
 
 	// get Map from user
-	_, err := fmt.Scanln(&testValMap)
+	_, err := fmt.Scanln(&Map)
 	if err != nil {
 		fmt.Println("Error reading input:", err)
 	}
 
-	mapWithIntValue := internal.ConvertMap(table, testValMap)
+	mapWithIntValue := internal.ConvertMap(table, Map)
 
 	internal.SortAndPrintResult(mapWithIntValue)
 
